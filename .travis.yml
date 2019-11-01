@@ -17,7 +17,7 @@ script:
   - true
 
 after_success:
-  - test `git log -1 --pretty=format:'%an'` != "Travis CI"  # 只有非 Travis 的 commit 才能继续执行
+  - git log -1 --pretty=format:'%an' | xargs test "Travis CI" !=  # 只有非 Travis 的 commit 才能继续执行
   - git stash
   - git checkout master
   - git stash pop
