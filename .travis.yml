@@ -17,6 +17,7 @@ script:
   - true
 
 after_success:
+  - test $TRAVIS_BRANCH != "master" 
   - git stash
   - git checkout master
   - git stash pop
